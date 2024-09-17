@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class InfoService {
-  endpoint: string = 'http://localhost:3000';
+  endpoint: string = 'http://<MY_BACKEND_URL>:3000';
 
   constructor(private http: HttpClient) {
   }
