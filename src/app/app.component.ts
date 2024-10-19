@@ -1,35 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { InfoService } from './info.service';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterLink, RouterOutlet, NzIconModule, NzLayoutModule, NzMenuModule, NzButtonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'my-frontend';
-
-  api: string = "";
-
-  backendInfo: string = 'No info from backend';
-
-  constructor(private infoSvc: InfoService) { }
-
-  ngOnInit(): void {
-    this.infoSvc.getInfo()
-      .subscribe((res: any) => {
-        const { data } = res;
-        if (data) {
-          this.backendInfo = `${data} 🎉`;
-        }
-      },
-        (err) => {
-          console.log(`Error on calling the backend`);
-        }
-      );
-  }
-
+export class AppComponent {
+  isCollapsed = false;
 }
